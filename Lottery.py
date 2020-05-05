@@ -42,3 +42,4 @@ class Menu:
 
 Menu()
 print("\nThank you for using this program")
+exit = input("Press ENTER to exit")
