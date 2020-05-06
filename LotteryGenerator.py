@@ -7,6 +7,9 @@ class Generator:
     def __init__(self, which, what):
         self.which = which
         self.what = what
+
+        # Lottery range and size declaration
+
         self.lotteries = {
             '1': [49, 6],  # Lotto
             '2': [42, 5],  # MiniLotto
@@ -14,6 +17,8 @@ class Generator:
             '4': [35, 5, 4, 1],  # ExtraSalary
             '5': [50, 5, 10, 2]  # Eurojackpot
         }
+
+        # Redirection to the appropriate function
 
         if self.what == "1":
             howMany = int(input("\nHow many examples do you want?\n"))
@@ -28,6 +33,8 @@ class Generator:
             self.website()
 
     def generating(self):
+
+        # Generating random numbers for the selected lottery
 
         if len(self.lotteries[self.which]) > 2:
             self.generatedNumbers1 = random.sample(
@@ -47,6 +54,8 @@ class Generator:
             return self.generatedNumbers1
 
     def playing(self):
+
+        # Getting numbers from the user
 
         myNumbers = []
         myNumbers2 = []
@@ -74,6 +83,8 @@ class Generator:
             self.lotteries[self.which][1] = 20
 
         self.generating()
+
+        # Comparing and counting  hit numbers
 
         hitsOnFirst = 0
         hitsOnSecond = 0

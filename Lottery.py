@@ -3,6 +3,9 @@ from LotteryGenerator import Generator
 
 class Menu:
     def __init__(self):
+
+        # Choosing which lottery we want to play
+
         options = {
             '1': 'Lotto',
             '2': 'MiniLotto',
@@ -22,6 +25,8 @@ class Menu:
 
         if which == '0':
             return
+
+        # Choosing what we want to do with selected lottery
 
         options = {
             '1': 'Just show me some examples of this lottery',

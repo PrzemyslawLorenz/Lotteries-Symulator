@@ -12,7 +12,11 @@ class Winning:
             '5': self.eurojackpot
         }
 
+        # Redirection to the appropriate function to set the right values of winTable
+
         whichToCheck[self.which]()
+
+        # Checking the degree of winning
 
         if self.hitsOnFirst + self.hitsOnSecond in self.winTable:
             print("\nCongratulations! I's a",
@@ -21,6 +25,8 @@ class Winning:
             print("\nSorry you have",
                   int(self.hitsOnFirst) + int(self.hitsOnSecond),
                   "hits. There is no prize for you")
+
+    # Declaration of the degree of winnings for individual lotteries
 
     def lotto(self):
         self.winTable = {
