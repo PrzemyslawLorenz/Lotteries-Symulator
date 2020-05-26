@@ -44,7 +44,9 @@ class Menu:
 
         Generator(which, what)
 
-
-Menu()
-print("\nThank you for using this program")
-exit = input("Press ENTER to exit")
+while True:
+    Menu()
+    
+    loop = input("\nType 'exit' if you want exit this program\nType anything to start over\n")
+    if loop == 'exit':
+        break
