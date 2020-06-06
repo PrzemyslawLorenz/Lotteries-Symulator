@@ -15,7 +15,8 @@ class Generator:
             '2': [42, 5],  # MiniLotto
             '3': [80, 20],  # MultiMulti
             '4': [35, 5, 4, 1],  # ExtraSalary
-            '5': [50, 5, 10, 2]  # Eurojackpot
+            '5': [50, 5, 10, 2],  # Eurojackpot
+            '6': [32, 6] # Fast 600
         }
 
         # Redirection to the appropriate function
@@ -84,7 +85,7 @@ class Generator:
 
         self.generating()
 
-        # Comparing and counting  hit numbers
+        # Comparing and counting hit numbers
 
         hitsOnFirst = 0
         hitsOnSecond = 0
