@@ -4,7 +4,7 @@ from LotteryGenerator import Generator
 class Menu:
     def __init__(self):
 
-        # Choosing which lottery we want to play
+        # Choosing which lottery we want to play from available options
 
         options = {
             '1': 'Lotto',
@@ -12,7 +12,7 @@ class Menu:
             '3': 'MultiMulti',
             '4': 'ExtraSalary',
             '5': 'Eurojackpot',
-            '0': 'Exit'
+            '0': 'Exit / Start over'
         }
         print("Which lottery you want to play? Choose number from below:")
         for key in options:
@@ -26,12 +26,13 @@ class Menu:
         if which == '0':
             return
 
-        # Choosing what we want to do with selected lottery
+        # Choosing what we want to do with selected lottery from available options
 
         options = {
             '1': 'Just show me some examples of this lottery',
             '2': 'I\'m gonna try my luck. LET\'S PLAY !',
-            '3': 'Show me website'
+            '3': 'Show me website',
+            '0': 'Exit / Start over'
         }
         print("\nWhat you want to do?")
         for key in options:
@@ -42,11 +43,17 @@ class Menu:
             print("Wrong choice. Try again.")
             what = input()
 
+        if which == '0':
+            return
+
+        # Redirection to the appropriate function
+
         Generator(which, what)
+
+# Looped whole program
 
 while True:
     Menu()
-    
-    loop = input("\nType 'exit' if you want exit this program\nType anything to start over\n")
+    loop = input("Type 'exit' to end program\nType anything to start over\n")
     if loop == 'exit':
         break
