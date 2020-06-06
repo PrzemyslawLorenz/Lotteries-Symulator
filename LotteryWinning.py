@@ -9,7 +9,8 @@ class Winning:
             '2': self.minilotto,
             '3': self.multimulti,
             '4': self.extrasalary,
-            '5': self.eurojackpot
+            '5': self.eurojackpot,
+            '6': self.fast600
         }
 
         # Redirection to the appropriate function to set the right values of winTable
@@ -79,4 +80,13 @@ class Winning:
             '30': "9th degree win",
             '12': "10th degree win",
             '21': "11th degree win"
+        }
+
+    def fast600(self):
+        self.winTable = {
+            '60': "1st degree win",
+            '50': "2nd degree win",
+            '40': "3rd degree win",
+            '30': "4th degree win",
+            '20': "5th degree win"
         }
