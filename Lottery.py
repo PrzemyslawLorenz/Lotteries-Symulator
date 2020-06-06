@@ -12,6 +12,7 @@ class Menu:
             '3': 'MultiMulti',
             '4': 'ExtraSalary',
             '5': 'Eurojackpot',
+            '6': 'Fast600',
             '0': 'Exit / Start over'
         }
         print("Which lottery you want to play? Choose number from below:")
