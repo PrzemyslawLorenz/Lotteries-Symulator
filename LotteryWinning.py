@@ -12,7 +12,8 @@ class Winning:
             '3': self.multimulti,
             '4': self.extrasalary,
             '5': self.eurojackpot,
-            '6': self.fast600
+            '6': self.fast600,
+            '7': self.keno
         }
 
         # Redirection to the appropriate function to set the right values of winTable
@@ -20,7 +21,7 @@ class Winning:
         whichToCheck[self.which]()
 
         # Checking the degree of winning and printing already existing generated and user numbers
-        
+
         if self.hitsOnFirst + self.hitsOnSecond in self.winTable:
             print("\nCongratulations! I's a",
                   self.winTable[self.hitsOnFirst + self.hitsOnSecond])
@@ -106,4 +107,16 @@ class Winning:
             '40': "3rd degree win",
             '30': "4th degree win",
             '20': "5th degree win"
+        }
+
+    def keno(self):
+        self.winTable = {
+            '100': "1st degree win",
+            '90': "2nd degree win",
+            '80': "3rd degree win",
+            '70': "4th degree win",
+            '60': "5th degree win",
+            '50': "6th degree win",
+            '10': "6th degree win",
+            '00': "5th degree win"
         }

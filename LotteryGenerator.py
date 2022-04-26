@@ -16,7 +16,8 @@ class Generator:
             '3': [80, 20],  # MultiMulti
             '4': [35, 5, 4, 1],  # ExtraSalary
             '5': [50, 5, 10, 2],  # Eurojackpot
-            '6': [32, 6] # Fast 600
+            '6': [32, 6], # Fast 600
+            '7': [70, 20] # Keno
         }
 
         # Redirection to the appropriate function
@@ -27,7 +28,7 @@ class Generator:
                 print(self.generating())
                 howMany -= 1
         elif self.what == "2":
-            if self.which == "3":
+            if self.which == "3" or self.which == "7":
                 self.lotteries[self.which][1] = 10
             self.playing()
         elif self.what == "3":
@@ -80,7 +81,7 @@ class Generator:
                     myNumbers2.pop()
                     myNumbers2.append(int(input()))
 
-        if self.which == "3":
+        if self.which == "3" or self.which == "7":
             self.lotteries[self.which][1] = 20
 
         self.generating()
@@ -112,7 +113,8 @@ class Generator:
             '3': 'multi-multi',  # MultiMulti
             '4': 'ekstra-pensja',  # ExtraSalary
             '5': 'eurojackpot',  # Eurojackpot
-            '6': 'szybkie-600' # Fast 600
+            '6': 'szybkie-600', # Fast 600
+            '7': 'keno'
         }
 
         webbrowser.open_new_tab("https://www.lotto.pl/" + websites[self.which])
