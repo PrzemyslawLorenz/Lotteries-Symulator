@@ -86,7 +86,7 @@ class Generator:
 
         self.generating()
 
-        # Comparing and counting hited numbers
+        # Comparing numbers and counting hits
 
         hitsOnFirst = 0
         hitsOnSecond = 0
@@ -114,7 +114,7 @@ class Generator:
             '4': 'ekstra-pensja',  # ExtraSalary
             '5': 'eurojackpot',  # Eurojackpot
             '6': 'szybkie-600', # Fast 600
-            '7': 'keno'
+            '7': 'keno' # Keno
         }
 
         webbrowser.open_new_tab("https://www.lotto.pl/" + websites[self.which])
