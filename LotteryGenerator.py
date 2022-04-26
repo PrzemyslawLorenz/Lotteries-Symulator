@@ -45,14 +45,14 @@ class Generator:
                 range(1, self.lotteries[self.which][2] + 1),
                 self.lotteries[self.which][3])
 
-            return self.generatedNumbers1, self.generatedNumbers2
+            return sorted(self.generatedNumbers1), sorted(self.generatedNumbers2)
 
         else:
             self.generatedNumbers1 = random.sample(
                 range(1, self.lotteries[self.which][0] + 1),
                 self.lotteries[self.which][1])
 
-            return self.generatedNumbers1
+            return sorted(self.generatedNumbers1)
 
     def playing(self):
 
@@ -85,7 +85,7 @@ class Generator:
 
         self.generating()
 
-        # Comparing and counting hit numbers
+        # Comparing and counting hited numbers
 
         hitsOnFirst = 0
         hitsOnSecond = 0
@@ -103,4 +103,16 @@ class Generator:
             Winning(self.which, self.generatedNumbers1, None, myNumbers, None, hitsOnFirst, hitsOnSecond)
 
     def website(self):
-        webbrowser.open_new_tab("https://www.lotto.pl/")
+
+        # Lottery websites declaration and redirection to them
+
+        websites = {
+            '1': 'lotto',  # Lotto
+            '2': 'mini-lotto',  # MiniLotto
+            '3': 'multi-multi',  # MultiMulti
+            '4': 'ekstra-pensja',  # ExtraSalary
+            '5': 'eurojackpot',  # Eurojackpot
+            '6': 'szybkie-600' # Fast 600
+        }
+
+        webbrowser.open_new_tab("https://www.lotto.pl/" + websites[self.which])

@@ -55,6 +55,6 @@ class Menu:
 
 while True:
     Menu()
-    loop = input("Type 'exit' to end program\nType anything to start over\n")
+    loop = input("\nType 'exit' to end program\nType anything to start over\n")
     if loop == 'exit':
         break

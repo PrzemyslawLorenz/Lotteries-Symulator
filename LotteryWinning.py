@@ -3,8 +3,6 @@ class Winning:
         self.which = which
         self.generatedNumbers1 = generatedNumbers1
         self.generatedNumbers2 = generatedNumbers2
-        self.myNumbers = myNumbers
-        self.myNumbers2 = myNumbers2
         self.hitsOnFirst = str(hitsOnFirst)
         self.hitsOnSecond = str(hitsOnSecond)
 
@@ -21,18 +19,18 @@ class Winning:
 
         whichToCheck[self.which]()
 
-        # Checking the degree of winning and printing already existing generated numbers and yours
-
+        # Checking the degree of winning and printing already existing generated and user numbers
+        
         if self.hitsOnFirst + self.hitsOnSecond in self.winTable:
             print("\nCongratulations! I's a",
                   self.winTable[self.hitsOnFirst + self.hitsOnSecond])
 
             if self.generatedNumbers2 is not None:
-                print("\nYour numbers: ", self.myNumbers, self.myNumbers2)
-                print("\nGenerated numbers: ", self.generatedNumbers1, self.generatedNumbers2)
+                print("\nYour numbers: ", sorted(myNumbers), sorted(myNumbers2))
+                print("\nGenerated numbers: ", sorted(self.generatedNumbers1), sorted(self.generatedNumbers2))
             else:
-                print("\nYour numbers: ", self.myNumbers)
-                print("\nGenerated numbers: ", self.generatedNumbers1)
+                print("\nYour numbers: ", sorted(myNumbers))
+                print("\nGenerated numbers: ", sorted(self.generatedNumbers1))
 
         else:
             print("\nSorry you have",
@@ -40,11 +38,11 @@ class Winning:
                 "hits. There is no prize for you")
 
             if self.generatedNumbers2 is not None:
-                print("\nYour numbers: ", self.myNumbers, self.myNumbers2)
-                print("\nGenerated numbers: ", self.generatedNumbers1, self.generatedNumbers2)
+                print("\nYour numbers: ", sorted(myNumbers), sorted(myNumbers2))
+                print("\nGenerated numbers: ", sorted(self.generatedNumbers1), sorted(self.generatedNumbers2))
             else:
-                print("\nYour numbers: ", self.myNumbers)
-                print("\nGenerated numbers: ", self.generatedNumbers1)
+                print("\nYour numbers: ", sorted(myNumbers))
+                print("\nGenerated numbers: ", sorted(self.generatedNumbers1))
 
     # Declaration of the degree of winnings for individual lotteries
 
