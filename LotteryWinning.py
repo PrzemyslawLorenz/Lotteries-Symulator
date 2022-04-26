@@ -1,6 +1,10 @@
 class Winning:
-    def __init__(self, which, hitsOnFirst=0, hitsOnSecond=None):
+    def __init__(self, which, generatedNumbers1, generatedNumbers2, myNumbers, myNumbers2, hitsOnFirst=0, hitsOnSecond=0):
         self.which = which
+        self.generatedNumbers1 = generatedNumbers1
+        self.generatedNumbers2 = generatedNumbers2
+        self.myNumbers = myNumbers
+        self.myNumbers2 = myNumbers2
         self.hitsOnFirst = str(hitsOnFirst)
         self.hitsOnSecond = str(hitsOnSecond)
 
@@ -17,15 +21,30 @@ class Winning:
 
         whichToCheck[self.which]()
 
-        # Checking the degree of winning
+        # Checking the degree of winning and printing already existing generated numbers and yours
 
         if self.hitsOnFirst + self.hitsOnSecond in self.winTable:
             print("\nCongratulations! I's a",
                   self.winTable[self.hitsOnFirst + self.hitsOnSecond])
+
+            if self.generatedNumbers2 is not None:
+                print("\nYour numbers: ", self.myNumbers, self.myNumbers2)
+                print("\nGenerated numbers: ", self.generatedNumbers1, self.generatedNumbers2)
+            else:
+                print("\nYour numbers: ", self.myNumbers)
+                print("\nGenerated numbers: ", self.generatedNumbers1)
+
         else:
             print("\nSorry you have",
-                  int(self.hitsOnFirst) + int(self.hitsOnSecond),
-                  "hits. There is no prize for you")
+                int(self.hitsOnFirst) + int(self.hitsOnSecond),
+                "hits. There is no prize for you")
+
+            if self.generatedNumbers2 is not None:
+                print("\nYour numbers: ", self.myNumbers, self.myNumbers2)
+                print("\nGenerated numbers: ", self.generatedNumbers1, self.generatedNumbers2)
+            else:
+                print("\nYour numbers: ", self.myNumbers)
+                print("\nGenerated numbers: ", self.generatedNumbers1)
 
     # Declaration of the degree of winnings for individual lotteries
 

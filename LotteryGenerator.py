@@ -96,8 +96,11 @@ class Generator:
             for _ in range(self.lotteries[self.which][3]):
                 if self.generatedNumbers2[_] in myNumbers2:
                     hitsOnSecond += 1
-
-        Winning(self.which, hitsOnFirst, hitsOnSecond)
+                    
+        if len(self.lotteries[self.which]) > 2:
+            Winning(self.which, self.generatedNumbers1, self.generatedNumbers2, myNumbers, myNumbers2, hitsOnFirst, hitsOnSecond)
+        else:
+            Winning(self.which, self.generatedNumbers1, None, myNumbers, None, hitsOnFirst, hitsOnSecond)
 
     def website(self):
         webbrowser.open_new_tab("https://www.lotto.pl/")
