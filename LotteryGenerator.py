@@ -47,7 +47,7 @@ class Generator:
                 range(1, self.lotteries[self.which][2] + 1),
                 self.lotteries[self.which][3])
 
-            file = open(self.options[self.which] + "_draws.txt", "a")
+            file = open("Lotteries-Symulator\\" + self.options[self.which] + "_draws.txt", "a")
             file.write(str(sorted(self.generatedNumbers1)) + " " + str(sorted(self.generatedNumbers2)) + "\n")
             file.close
 
@@ -58,7 +58,7 @@ class Generator:
                 range(1, self.lotteries[self.which][0] + 1),
                 self.lotteries[self.which][1])
 
-            file = open(self.options[self.which] + "_draws.txt", "a")
+            file = open("Lotteries-Symulator\\" + self.options[self.which] + "_draws.txt", "a")
             file.write(str(sorted(self.generatedNumbers1)) + "\n")
             file.close
 
