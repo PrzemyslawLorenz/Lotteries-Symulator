@@ -4,9 +4,10 @@ from LotteryWinning import Winning
 
 
 class Generator:
-    def __init__(self, which, what):
+    def __init__(self, which, what, options):
         self.which = which
         self.what = what
+        self.options = options
 
         # Lottery range and size declaration
 
@@ -46,12 +47,20 @@ class Generator:
                 range(1, self.lotteries[self.which][2] + 1),
                 self.lotteries[self.which][3])
 
+            file = open(self.options[self.which] + "_draws.txt", "a")
+            file.write(str(sorted(self.generatedNumbers1)) + " " + str(sorted(self.generatedNumbers2)) + "\n")
+            file.close
+
             return sorted(self.generatedNumbers1), sorted(self.generatedNumbers2)
 
         else:
             self.generatedNumbers1 = random.sample(
                 range(1, self.lotteries[self.which][0] + 1),
                 self.lotteries[self.which][1])
+
+            file = open(self.options[self.which] + "_draws.txt", "a")
+            file.write(str(sorted(self.generatedNumbers1)) + "\n")
+            file.close
 
             return sorted(self.generatedNumbers1)
 
