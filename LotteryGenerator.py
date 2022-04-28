@@ -1,5 +1,6 @@
 import random
 import webbrowser
+import heapq
 from LotteryWinning import Winning
 
 
@@ -33,7 +34,9 @@ class Generator:
                 self.lotteries[self.which][1] = 10
             self.playing()
         elif self.what == "3":
-            self.website()
+            self.probability()
+        elif self.what == "4":
+            self.website()            
 
     def generating(self):
 
@@ -127,3 +130,45 @@ class Generator:
         }
 
         webbrowser.open_new_tab("https://www.lotto.pl/" + websites[self.which])
+
+    def probability(self):
+
+        howManyDraws = 0
+        tab = []
+        for _ in range(self.lotteries[self.which][0]):
+            tab.append(0)
+
+        file = open("Lotteries-Symulator\\" + self.options[self.which] + "_draws.txt", "r")
+
+        for line in open("Lotteries-Symulator\\" + self.options[self.which] + "_draws.txt", "r"):
+            howManyDraws += 1
+            line = line.replace('[', '').replace(']', '').replace(',', '')
+            line = [int(i) for i in line.split(' ')]
+
+            for value in line:
+                tab[value-1] += 1
+                
+        file.close
+
+        temp=tab
+
+        print("How many common and uncommon numbers you want to see?\n")
+        while True:
+            try:
+                howManyNumbers = int(input())
+                break
+            except ValueError:
+                print("Wrong number. Try again: ")
+                pass
+
+        print("The most common numbers in", howManyDraws, "draws are: ")
+        for _ in range(howManyNumbers):
+            print(tab.index(max(tab)) + _ + 1, "which appeared", max(tab), "times")
+            tab.pop(tab.index(max(tab)))
+
+        tab = temp
+
+        print("The most uncommon numbers in", howManyDraws, "draws are: ")
+        for _ in range(howManyNumbers):
+            print(tab.index(min(tab)) + _ + 1, "which appeared", min(tab), "times")
+            tab.pop(tab.index(min(tab)))

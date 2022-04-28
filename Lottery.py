@@ -9,7 +9,8 @@ class Menu:
         options = {
             '1': 'Just show me some examples of lottery',
             '2': 'I\'m gonna try my luck. LET\'S PLAY !',
-            '3': 'Show me website',
+            '3': 'Show me common and uncommon numbers',
+            '4': 'Show me website',
             '0': 'Exit / Start over'
         }
         print("\nWhat you want to do?")
