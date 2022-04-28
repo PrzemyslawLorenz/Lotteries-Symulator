@@ -25,7 +25,8 @@ class Generator:
         # Redirection to the appropriate function
 
         if self.what == "1":
-            howMany = int(input("\nHow many examples do you want?\n"))
+            print("How many examples do you want?\n")
+            howMany = self.inputing()
             while(howMany):
                 print(self.generating())
                 howMany -= 1
@@ -77,21 +78,21 @@ class Generator:
               "numbers from 1 to", self.lotteries[self.which][0],
               "\nPlease give them one at a time")
         for _ in range(self.lotteries[self.which][1]):
-            myNumbers.append(int(input()))
+            myNumbers.append(self.inputing())
             while myNumbers[_] not in range(1, self.lotteries[self.which][0] + 1) or myNumbers.count(myNumbers[_]) > 1:
                 print("You give me wrong number. Try again: ")
                 myNumbers.pop()
-                myNumbers.append(int(input()))
+                myNumbers.append(self.inputing())
 
         if len(self.lotteries[self.which]) > 2:
             print("\nNow give me", self.lotteries[self.which][3],
                   "number/s from 1 to", self.lotteries[self.which][2])
             for _ in range(self.lotteries[self.which][3]):
-                myNumbers2.append(int(input()))
+                myNumbers2.append(self.inputing())
                 while myNumbers2[_] not in range(1, self.lotteries[self.which][2] + 1) or myNumbers2.count(myNumbers2[_]) > 1:
                     print("You give me wrong number. Try again: ")
                     myNumbers2.pop()
-                    myNumbers2.append(int(input()))
+                    myNumbers2.append(self.inputing())
 
         if self.which == "3" or self.which == "7":
             self.lotteries[self.which][1] = 20
@@ -152,14 +153,8 @@ class Generator:
 
         temp=tab
 
-        print("How many common and uncommon numbers you want to see?\n")
-        while True:
-            try:
-                howManyNumbers = int(input())
-                break
-            except ValueError:
-                print("Wrong number. Try again: ")
-                pass
+        print("How many common and uncommon numbers you want to see?")
+        howManyNumbers = self.inputing()
 
         print("The most common numbers in", howManyDraws, "draws are: ")
         for _ in range(howManyNumbers):
@@ -168,7 +163,19 @@ class Generator:
 
         tab = temp
 
-        print("The most uncommon numbers in", howManyDraws, "draws are: ")
+        print("\nThe most uncommon numbers in", howManyDraws, "draws are: ")
         for _ in range(howManyNumbers):
             print(tab.index(min(tab)) + _ + 1, "which appeared", min(tab), "times")
             tab.pop(tab.index(min(tab)))
+
+    def inputing (self):
+
+        while True:
+            try:
+                Input = int(input())
+                break
+            except ValueError:
+                print("Wrong value. Try again. ")
+                pass
+
+        return Input
