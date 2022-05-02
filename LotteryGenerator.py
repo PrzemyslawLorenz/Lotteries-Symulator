@@ -34,8 +34,6 @@ class Generator:
             if self.which == "3" or self.which == "7":
                 self.lotteries[self.which][1] = 10
             self.playing()
-        elif self.what == "3":
-            self.probability()
         elif self.what == "4":
             self.website()            
 
@@ -131,43 +129,7 @@ class Generator:
         }
 
         webbrowser.open_new_tab("https://www.lotto.pl/" + websites[self.which])
-
-    def probability(self):
-
-        howManyDraws = 0
-        tab = []
-        for _ in range(self.lotteries[self.which][0]):
-            tab.append(0)
-
-        file = open(os.path.join(sys.path[0], self.options[self.which] + "_draws.txt"), "r")
-
-        for line in open(os.path.join(sys.path[0], self.options[self.which] + "_draws.txt"), "r"):
-            howManyDraws += 1
-            line = line.replace('[', '').replace(']', '').replace(',', '')
-            line = [int(i) for i in line.split(' ')]
-
-            for value in line:
-                tab[value-1] += 1
-                
-        file.close
-
-        temp=tab
-
-        print("How many common and uncommon numbers you want to see?")
-        howManyNumbers = self.inputing()
-
-        print("The most common numbers in", howManyDraws, "draws are: ")
-        for _ in range(howManyNumbers):
-            print(tab.index(max(tab)) + _ + 1, "which appeared", max(tab), "times")
-            tab.pop(tab.index(max(tab)))
-
-        tab = temp
-
-        print("\nThe most uncommon numbers in", howManyDraws, "draws are: ")
-        for _ in range(howManyNumbers):
-            print(tab.index(min(tab)) + _ + 1, "which appeared", min(tab), "times")
-            tab.pop(tab.index(min(tab)))
-
+        
     def inputing (self):
 
         while True:

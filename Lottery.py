@@ -1,5 +1,5 @@
 from LotteryGenerator import Generator
-
+from LotteryDataBase import DataBase
 
 class Menu:
     def __init__(self):
@@ -9,7 +9,7 @@ class Menu:
         options = {
             '1': 'Just show me some examples of lottery',
             '2': 'I\'m gonna try my luck. LET\'S PLAY !',
-            '3': 'Show me common and uncommon numbers',
+            '3': 'Go to data base',
             '4': 'Show me website',
             '0': 'Exit / Start over'
         }
@@ -46,14 +46,15 @@ class Menu:
             print("Wrong choice. Try again.")
             which = input()
 
+        # Redirection to the appropriate function
         if which == '0':
             return
+        elif what == '3':
+            DataBase(which, options)
+        else:
+            Generator(which, what, options)
 
-        # Redirection to the appropriate function
-
-        Generator(which, what, options)
-
-# Looped whole program
+# Looped whole program1
 
 while True:
     Menu()
