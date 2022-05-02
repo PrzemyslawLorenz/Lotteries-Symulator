@@ -17,7 +17,8 @@ class DataBase:
             }
             whatop = {
                 '1': 'Show me common and uncommon numbers',
-                '2': 'Delete some draws from data base'
+                '2': 'Delete some draws from data base',
+                '3': 'Add some draws to data base'
             }
 
             print("What you want to do with data base?")
@@ -33,6 +34,10 @@ class DataBase:
                 self.commonAndUncommon()
             elif what == '2':
                 self.deleting()
+            elif what == '3':
+                if self.which == "3" or self.which == "7":
+                    self.lotteries[self.which][1] = 10
+                self.adding()
 
             loop = input("\nType 'exit' to quit data base\nType anything to start over\n")
             if loop == 'exit':
@@ -76,17 +81,69 @@ class DataBase:
 
     def deleting (self):
 
+        drawsToDelete = []
         print("How many draws you want to delete?")
-        drawsToDelete = self.inputing()
+        howManyToDelete = self.inputing()
+        print("Which draws you want to delete?\nPlease give them one at a time")
+        for _ in range(howManyToDelete):
+            drawsToDelete.append(self.inputing())
 
         file = open(os.path.join(sys.path[0], self.options[self.which] + "_draws.txt"), "r+")
         lines = file.readlines()
         file.seek(0)
         file.truncate()
-        file.writelines(lines[drawsToDelete:])
+        for number, line in enumerate(lines):
+            if number + 1 not in drawsToDelete:
+                file.write(line)
         file.close
 
         print("Draws successfull deleted")
+
+    def adding (self):
+
+        print("How many draws you want to add?")
+        howManyDrawsToAdd = self.inputing()
+        
+        while howManyDrawsToAdd != 0:
+
+            # Getting numbers from the user
+
+            myNumbers = []
+            myNumbers2 = []
+            print("\nOkay. Give me your", self.lotteries[self.which][1],
+                "numbers from 1 to", self.lotteries[self.which][0],
+                "\nPlease give them one at a time")
+            for _ in range(self.lotteries[self.which][1]):
+                myNumbers.append(self.inputing())
+                while myNumbers[_] not in range(1, self.lotteries[self.which][0] + 1) or myNumbers.count(myNumbers[_]) > 1:
+                    print("You give me wrong number. Try again: ")
+                    myNumbers.pop()
+                    myNumbers.append(self.inputing())
+
+            if len(self.lotteries[self.which]) > 2:
+                print("\nNow give me", self.lotteries[self.which][3],
+                    "number/s from 1 to", self.lotteries[self.which][2])
+                for _ in range(self.lotteries[self.which][3]):
+                    myNumbers2.append(self.inputing())
+                    while myNumbers2[_] not in range(1, self.lotteries[self.which][2] + 1) or myNumbers2.count(myNumbers2[_]) > 1:
+                        print("You give me wrong number. Try again: ")
+                        myNumbers2.pop()
+                        myNumbers2.append(self.inputing())
+
+            if len(self.lotteries[self.which]) > 2:
+                file = open(os.path.join(sys.path[0], self.options[self.which] + "_draws.txt"), "a")
+                file.write(str(sorted(myNumbers)) + " " + str(sorted(myNumbers2)) + "\n")
+                file.close
+
+            else:
+                file = open(os.path.join(sys.path[0], self.options[self.which] + "_draws.txt"), "a")
+                file.write(str(sorted(myNumbers)) + "\n")
+                file.close
+
+            if self.which == "3" or self.which == "7":
+                self.lotteries[self.which][1] = 20
+
+            howManyDrawsToAdd -= 1
 
     def inputing (self):
 
