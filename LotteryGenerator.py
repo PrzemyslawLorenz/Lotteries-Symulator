@@ -25,7 +25,7 @@ class Generator:
         # Redirection to the appropriate function
 
         if self.what == "1":
-            print("How many examples do you want?\n")
+            print("How many examples do you want?")
             howMany = self.inputing()
             while(howMany):
                 print(self.generating())

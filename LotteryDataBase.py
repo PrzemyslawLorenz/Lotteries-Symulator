@@ -71,10 +71,12 @@ class DataBase:
                 
         file.close
 
-        temp=tab
-
         print("How many common and uncommon numbers you want to see?")
         howManyNumbers = self.inputing()
+        while howManyNumbers > (self.lotteries[self.which][0]) / 2:
+            print("There isn't so many numbers in this lottery.\nPlease give half of a range of lottery.",
+            "In this case it should be max",int((self.lotteries[self.which][0]) / 2),"\nTry again:")
+            howManyNumbers = self.inputing()
 
         # Counting most common and uncommon numbers
 
@@ -82,8 +84,6 @@ class DataBase:
         for _ in range(howManyNumbers):
             print(tab.index(max(tab)) + _ + 1, "which appeared", max(tab), "times")
             tab.pop(tab.index(max(tab)))
-
-        tab = temp
 
         print("\nThe most uncommon numbers in", howManyDraws, "draws are: ")
         for _ in range(howManyNumbers):
