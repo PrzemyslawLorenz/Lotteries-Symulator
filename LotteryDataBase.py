@@ -3,7 +3,7 @@ import sys, os
 
 class DataBase:
     def __init__(self, which, options):
-        while True:
+        while True:     # Looping
             self.which = which
             self.options = options
             self.lotteries = {
@@ -15,10 +15,14 @@ class DataBase:
                 '6': [32, 6], # Fast 600
                 '7': [70, 20] # Keno
             }
+
+            # Choosing what we want to do with our data base
+
             whatop = {
                 '1': 'Show me common and uncommon numbers',
                 '2': 'Delete some draws from data base',
-                '3': 'Add some draws to data base'
+                '3': 'Add some draws to data base',
+                '0': 'Exit / Start over'
             }
 
             print("What you want to do with data base?")
@@ -30,6 +34,8 @@ class DataBase:
                 print("Wrong choice. Try again.")
                 what = input()
 
+            # Redirection to the appropriate function
+
             if what == '1':
                 self.commonAndUncommon()
             elif what == '2':
@@ -38,6 +44,8 @@ class DataBase:
                 if self.which == "3" or self.which == "7":
                     self.lotteries[self.which][1] = 10
                 self.adding()
+            elif what == '0':
+                return
 
             loop = input("\nType 'exit' to quit data base\nType anything to start over\n")
             if loop == 'exit':
@@ -45,6 +53,7 @@ class DataBase:
 
     def commonAndUncommon(self):
 
+        # Reeding our txt file
         howManyDraws = 0
         tab = []
         for _ in range(self.lotteries[self.which][0]):
@@ -67,6 +76,8 @@ class DataBase:
         print("How many common and uncommon numbers you want to see?")
         howManyNumbers = self.inputing()
 
+        # Counting most common and uncommon numbers
+
         print("The most common numbers in", howManyDraws, "draws are: ")
         for _ in range(howManyNumbers):
             print(tab.index(max(tab)) + _ + 1, "which appeared", max(tab), "times")
@@ -88,6 +99,8 @@ class DataBase:
         for _ in range(howManyToDelete):
             drawsToDelete.append(self.inputing())
 
+        # Reeding and saving our txt file without lines we choose
+
         file = open(os.path.join(sys.path[0], self.options[self.which] + "_draws.txt"), "r+")
         lines = file.readlines()
         file.seek(0)
@@ -103,10 +116,10 @@ class DataBase:
 
         print("How many draws you want to add?")
         howManyDrawsToAdd = self.inputing()
-        
-        while howManyDrawsToAdd != 0:
 
-            # Getting numbers from the user
+        while howManyDrawsToAdd != 0:   # Looping
+
+            # Getting numbers from the user which we wont to add to txt file
 
             myNumbers = []
             myNumbers2 = []
@@ -129,6 +142,8 @@ class DataBase:
                         print("You give me wrong number. Try again: ")
                         myNumbers2.pop()
                         myNumbers2.append(self.inputing())
+
+            # Adding this numbers to txt file
 
             if len(self.lotteries[self.which]) > 2:
                 file = open(os.path.join(sys.path[0], self.options[self.which] + "_draws.txt"), "a")

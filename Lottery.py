@@ -4,7 +4,7 @@ from LotteryDataBase import DataBase
 class Menu:
     def __init__(self):
 
-        # Choosing what we want to do with selected lottery from available options
+        # Choosing what we want to do from available options
 
         options = {
             '1': 'Just show me some examples of lottery',
@@ -25,7 +25,7 @@ class Menu:
         if what == '0':
             return
 
-        # Choosing which lottery we want to play from available options
+        # Choosing which lottery we want to use
 
         options = {
             '1': 'Lotto',
@@ -46,7 +46,8 @@ class Menu:
             print("Wrong choice. Try again.")
             which = input()
 
-        # Redirection to the appropriate function
+        # Redirection to the appropriate function or class
+
         if which == '0':
             return
         elif what == '3':
@@ -54,7 +55,7 @@ class Menu:
         else:
             Generator(which, what, options)
 
-# Looped whole program1
+# Looped whole program
 
 while True:
     Menu()

@@ -39,7 +39,7 @@ class Generator:
 
     def generating(self):
 
-        # Generating random numbers for the selected lottery
+        # Generating random numbers for the selected lottery and adding them to data base
 
         if len(self.lotteries[self.which]) > 2:
             self.generatedNumbers1 = random.sample(
